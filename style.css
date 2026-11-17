@@ -1,0 +1,225 @@
+/* Colours and spacing: neutrals plus one accent (peach), one spacing scale */
+:root {
+  --bg: #F8EFE6;
+  --card: #E4EDDF;
+  --paper: #FFFFFF;
+  --text: #3A2E28;
+  --text-soft: #6A5A50;
+  --line: #D9C8B8;
+  --accent: #B85C38;
+  --accent-dark: #8F4326;
+  --s1: 8px;
+  --s2: 24px;
+  --s3: 56px;
+  --edge: 24px;
+}
+
+/* Page base: font, colour, background */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+/* Headings: serif, more space above than below */
+h1, h2, h3, h4 {
+  font-family: "Fraunces", Georgia, serif;
+  line-height: 1.2;
+  margin: var(--s2) 0 var(--s1);
+}
+h1 { font-size: 2.75rem; margin-top: 0; }
+h2 { font-size: 1.9rem; margin-top: 0; }
+h3 { font-size: 1.25rem; }
+
+/* Text: paragraphs and lists stay a readable width */
+p { margin: 0 0 var(--s1); max-width: 65ch; }
+p + p { margin-top: var(--s1); }
+
+/* Links: accent colour is only for links and buttons */
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+a:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* Navigation bar: flexbox, stays at the top */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1) var(--s2);
+  padding: 0 var(--edge);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s1);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-link:hover { text-decoration: underline; }
+
+/* Sections: shared width and spacing */
+main section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--s3) var(--edge);
+}
+
+/* Hero: first screen, name, sentence and buttons */
+#hero { padding-top: var(--s3); }
+.lead {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin-bottom: var(--s2);
+}
+
+/* Stickers: short labels with real facts, slightly tilted like stickers */
+.stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s2);
+  list-style: none;
+  margin: var(--s2) 0;
+  padding: 0;
+}
+.sticker {
+  background: var(--card);
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  padding: 4px 16px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.sticker:nth-child(odd) { transform: rotate(-2deg); }
+.sticker:nth-child(even) { transform: rotate(1.5deg); }
+
+/* Buttons: accent fill, colour change on hover only */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s2);
+  margin-top: var(--s2);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s2);
+  background: var(--accent);
+  color: #FFFFFF;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #FFFFFF; }
+.btn-outline { background: transparent; color: var(--accent); }
+.btn-outline:hover { background: var(--accent); border-color: var(--accent); }
+
+/* Lists without bullets, used in story and cards */
+.plain-list { list-style: none; margin: 0 0 var(--s1); padding: 0; }
+.plain-list li { padding: 2px 0; }
+
+/* Skills cards: grid, flat, one green tone */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s2);
+  margin-top: var(--s2);
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: var(--s2);
+}
+.card h3 { margin-top: 0; }
+
+/* Resume section: download button above the paper sheet */
+#resume-section h2 { margin-bottom: var(--s2); }
+
+/* Paper resume: white one-page sheet */
+#resume {
+  margin-top: var(--s2);
+  max-width: 720px;
+  padding: 40px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+#resume p { max-width: none; }
+#resume ul { margin: 0 0 var(--s1); padding-left: 20px; }
+.r-name { font-size: 1.8rem; margin: 0; }
+.r-contact { color: var(--text-soft); margin-bottom: var(--s1); }
+.r-head {
+  font-size: 1.05rem;
+  margin: var(--s2) 0 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.r-title { font-weight: 700; margin: 0; }
+
+/* Contact: closing call to action */
+#contact { padding-bottom: var(--s3); }
+
+/* Small screens: under 700px */
+@media (max-width: 700px) {
+  :root { --edge: 16px; --s3: 40px; }
+  body { font-size: 1rem; }
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.6rem; }
+  .lead { font-size: 1.3rem; }
+  .actions .btn { width: 100%; justify-content: center; box-sizing: border-box; }
+  #resume { padding: 24px 16px; }
+}
+
+/* Reduced motion: switch off transitions */
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Print: only the resume, black on white, one A4 page */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #FFFFFF; color: #000000; font-size: 10pt; line-height: 1.35; }
+  .nav, main section:not(#resume-section), .btn, #resume-section h2 { display: none; }
+  #resume-section { padding: 0; max-width: none; }
+  #resume { margin: 0; padding: 0; max-width: none; border: 0; font-size: 10pt; color: #000000; }
+  #resume .r-contact { color: #000000; }
+  .r-head { border-bottom: 1px solid #000000; margin-top: 10px; }
+  #resume ul { margin-bottom: 2px; }
+}
